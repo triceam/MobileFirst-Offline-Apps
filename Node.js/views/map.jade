@@ -1,0 +1,41 @@
+html
+  head
+    title GeoPix - powered by Bluemix
+    link(href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css' rel='stylesheet')
+    link(href='/public/css/index.css' rel='stylesheet')
+    link(href='/public/leaflet/leaflet.css' rel='stylesheet')
+    link(href='/public/leaflet/MarkerCluster.Default.css' rel='stylesheet')
+    link(href='/public/leaflet/MarkerCluster.css' rel='stylesheet')
+    script(src='/public/leaflet/leaflet.js')
+    script(src='/public/leaflet/leaflet.markercluster.js')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    div(class='well')
+        h1 GeoPix - Powered by Bluemix
+        p
+            a(href='/') Map
+             &nbsp; | &nbsp;
+            a(href='/list') List
+    div(id="map")
+    
+    script!= 'var results = ' + JSON.stringify(results) +';'
+        
+    script.
+        // create a map in the "map" div, set the view to a given place and zoom
+        var map = L.map('map');
+        var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+        var markerArray = [];
+        var markers = new L.MarkerClusterGroup();
+
+
+        for (var x=0; x<results.length; x++) {
+            var val = results[x];
+            var marker = L.marker([ val.latitude, val.longitude]);;
+            markerArray.push(marker); 
+            markers.addLayer(marker);
+            marker.bindPopup("<img src='" + val.image + "' class='popupImage'/>");
+        }
+
+        var group = L.featureGroup(markerArray);
+        map.fitBounds(group.getBounds());
+        map.addLayer(markers);

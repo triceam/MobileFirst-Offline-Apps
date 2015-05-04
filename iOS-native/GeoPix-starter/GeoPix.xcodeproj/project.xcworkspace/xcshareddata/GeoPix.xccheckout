@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B00C777A-6D36-4454-B921-257653995DC1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GeoPix</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D6EAAE0DC7126689A8E008B547E01D2406E8B805</key>
+		<string>https://hub.jazz.net/git/andrewtrice/GeoPix-client/</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GeoPix.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D6EAAE0DC7126689A8E008B547E01D2406E8B805</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://hub.jazz.net/git/andrewtrice/GeoPix-client/</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D6EAAE0DC7126689A8E008B547E01D2406E8B805</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D6EAAE0DC7126689A8E008B547E01D2406E8B805</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GeoPix-client</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,16 @@
+img {
+    width:100%;
+}
+
+#map {
+    position:absolute; 
+    top:145px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+}
+
+.popupImage {
+ 
+    width:300px;
+}

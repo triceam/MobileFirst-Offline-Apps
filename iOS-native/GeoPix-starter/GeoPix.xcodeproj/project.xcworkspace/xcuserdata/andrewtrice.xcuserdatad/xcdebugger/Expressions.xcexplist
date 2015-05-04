@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[ViewController captureButtonTapped:]:ViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "locationManager.location">
+            </PersistentString>
+            <PersistentString
+               value = "locationManager">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ViewController viewDidLoad]:ViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.locationManager.location">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

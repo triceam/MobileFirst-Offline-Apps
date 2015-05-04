@@ -1,0 +1,13 @@
+applications:
+- services:
+  - GeoPix-Sample-cloudantNoSQLDB
+  - GeoPix-Sample-imfpush
+  - GeoPix-Sample-AdvancedMobileAccess
+  disk_quota: 1024M
+  host: geopix-sample
+  name: GeoPix-Sample
+  command: node app.js
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 512M
