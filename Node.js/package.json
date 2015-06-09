@@ -14,8 +14,12 @@
   "engines": {
     "node": "0.10.26"
   },
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBM-Bluemix/MobileFirst-Offline-Apps.git"
+  },
   "scripts": {
+    "install": "node admin.js track",
     "start": "node app.js"
   }
 }
