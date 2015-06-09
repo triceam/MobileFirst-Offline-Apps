@@ -9,7 +9,9 @@
     "jade": "^1.9.2",
     "nano": "^6.1.2",
     "passport": "*",
-    "passport-imf-token-validation": "*"
+    "passport-imf-token-validation": "*",
+    "commander": "^2.6.0",
+    "http-post": "^0.1.1"
   },
   "engines": {
     "node": "0.10.26"
