@@ -11,6 +11,8 @@ try {
 }
 
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 app.use(passport.initialize());
 
 app.set('view engine', 'jade');
@@ -40,6 +42,12 @@ var geopix;
 Cloudant({account:credentials.username, password:credentials.password}, function(err, cloudant) {
     console.log('Connected to Cloudant');
     geopix = cloudant.use(database);
+    var feed = geopix.follow({include_docs: true, since: "now"});
+    feed.on('change', function (change) {
+      console.log("change: ", change);
+      io.sockets.emit('image', change);
+    });
+    feed.follow();
 })
 
 var prepareData = function(res, template) {
@@ -68,7 +76,7 @@ var prepareData = function(res, template) {
                 var obj = result.docs[x];
 
                 for (var key in obj._attachments) {
-                    obj.image = credentials.url + "/" + database + "/" + obj._id +"/" + key;
+                    obj.image = "/image/" + obj._id +"/" + key;
                     break;
                 }
 
@@ -88,11 +96,10 @@ app.get('/list', function(req, res){
     prepareData(res, 'list');
 });
 
-
-
-
-
-
+app.get('/image/:doc/:image', function(req, res){
+  geopix.attachment.get(req.params.doc, req.params.image).pipe(res);
+  res.type('jpg');
+});
 
 // create a public static content service
 app.use("/public", express.static(__dirname + '/public'));
@@ -119,6 +126,10 @@ app.get('/protectedServices/test', passport.authenticate('imf-backend-strategy',
 		}
 );
 
+io.on('connection', function (socket) {
+  console.log('New Client WSS Connection.')
+});
+
 var port = (process.env.VCAP_APP_PORT || 3000);
-app.listen(port);
+server.listen(port);
 console.log("mobile backend app is listening at " + port);

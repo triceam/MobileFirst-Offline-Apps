@@ -8,6 +8,7 @@ html
     link(href='/public/leaflet/MarkerCluster.css' rel='stylesheet')
     script(src='/public/leaflet/leaflet.js')
     script(src='/public/leaflet/leaflet.markercluster.js')
+    script(src="/socket.io/socket.io.js")
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
     div(class='well')
@@ -27,6 +28,22 @@ html
         var markerArray = [];
         var markers = new L.MarkerClusterGroup();
 
+        var socket = io(); // TIP: io() with no args does auto-discovery
+
+        socket.on('connect', function () { // TIP: you can avoid listening on `connect` and listen on events directly too!
+          console.log('WSS Connected');
+
+          socket.on('image', function (image) { // TIP: you can avoid listening on `connect` and listen on events directly too!
+              console.log('New Image');
+              console.log(image);
+              var attachment = Object.keys(image.doc._attachments)[0]
+              var url = "/image/" + image.doc._id + "/" + attachment;
+              console.log(url);
+              var marker = L.marker([ image.doc.latitude, image.doc.longitude]);;
+              markers.addLayer(marker);
+              marker.bindPopup("<img src='" + url + "' class='popupImage'/>");
+          });
+        });
 
         for (var x=0; x<results.length; x++) {
             var val = results[x];
